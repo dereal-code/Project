@@ -1,1 +1,1 @@
-*Python SpeechRecognition script using Google Speech Recognition API*
+*Python Speech Recognition script using Google Speech Recognition API*
