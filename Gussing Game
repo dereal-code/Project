@@ -1,0 +1,39 @@
+import random
+
+
+def generate_word():
+    name = input("Please enter your name: ")
+
+    words = ["assert", "assess", "pandas", "string", "which", "under", "every", "large", "small", "found",
+             "never", "house", "world", "young", "paper", "white", "black", "chance", "center", "burden",
+             "budget", "button", "bureau", "carbon", "castle", "casual", "charge", "circle", "client", "comply",
+             "common", "chosen", "combat", "damage", "debate", "defeat", "couple", "course", "dinner", "direct",
+             "dollar", "effort", "equity", "escape", "ensure", "famous", "finger", "formal", "format", "french"]
+
+    generated_main_word = words[random.randint(0, len(words) - 1)]
+    generated_word = generated_main_word[:2] + "__" + generated_main_word[4:]
+    print(f"\nYour word is: {generated_word} \n")
+
+    for i in range(3):
+        x, y = input(f"Guess the missing letters. Leave space between inputs: ").lower().split()
+        players_guess = generated_main_word[:2] + x + y + generated_main_word[4:]
+        if players_guess == generated_main_word:
+            print(f'\nCongratulations, {name}! You guessed \"{generated_main_word}\" correctly!')
+            break
+        elif i == 2:
+            print(f"\nYou couldn't guess \"{generated_main_word}\" in three guesses :(\n")
+        else:
+            guesses_remaining = {3 - (i + 1)}
+            print(f"\nTry again. Guess remaining: {guesses_remaining} \n")
+
+    playAgain = input("\nDo you want to play again?: ")
+    a = ["yes", "y", "ya", "yeah", "ye", "yh"]
+    for responds in a:
+        if playAgain.lower() == responds:
+            generate_word()
+            return
+    print("\nThanks for playing! See you next time.")
+
+
+if __name__ == "__main__":
+    generate_word()
